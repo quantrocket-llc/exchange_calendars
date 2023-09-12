@@ -30,7 +30,7 @@ import pandas as pd
 
 from exchange_calendars import get_calendar
 
-cal_name = sys.argv[1].upper()
+cal_name = sys.argv[1]
 
 filename = cal_name.replace("/", "-").lower() + ".csv"
 path = pathlib.Path(__file__).parents[1].joinpath("tests/resources", filename)
