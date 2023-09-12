@@ -10,6 +10,9 @@ from .exchange_calendar_aixk import AIXKExchangeCalendar
 from .exchange_calendar_asex import ASEXExchangeCalendar
 from .exchange_calendar_bvmf import BVMFExchangeCalendar
 from .exchange_calendar_cmes import CMESExchangeCalendar
+from .exchange_calendar_cmes_equity import CMESEquityExchangeCalendar
+from .exchange_calendar_cmes_equity_liquid import CMESEquityLiquidHoursExchangeCalendar
+from .exchange_calendar_cbot import CBOTExchangeCalendar
 from .exchange_calendar_iepa import IEPAExchangeCalendar
 from .exchange_calendar_xams import XAMSExchangeCalendar
 from .exchange_calendar_xasx import XASXExchangeCalendar
@@ -69,6 +72,9 @@ _default_calendar_factories = {
     "ASEX": ASEXExchangeCalendar,
     "BVMF": BVMFExchangeCalendar,
     "CMES": CMESExchangeCalendar,
+    "CBOT": CBOTExchangeCalendar,
+    "CME_EQUITY": CMESEquityExchangeCalendar,
+    "CME_EQUITY_LIQUID": CMESEquityLiquidHoursExchangeCalendar,
     "IEPA": IEPAExchangeCalendar,
     "XAMS": XAMSExchangeCalendar,
     "XASX": XASXExchangeCalendar,
@@ -134,7 +140,6 @@ _default_calendar_aliases = {
     "TSX": "XTSE",
     "BMF": "BVMF",
     "CME": "CMES",
-    "CBOT": "CMES",
     "COMEX": "CMES",
     "NYMEX": "CMES",
     "ICE": "IEPA",
@@ -151,6 +156,46 @@ _default_calendar_aliases = {
     "SSE": "XSHG",
     "TASE": "XTAE",
     "BVB": "XBSE",
+    "ARCA": "XNYS",
+    "AMEX": "XNYS",
+    "PINK": "XNYS",
+    "ARCX": "XNYS",
+    "XASE": "XNYS",
+    "PINX": "XNYS",
+    "PSGM": "XNYS",
+    "OTCB": "XNYS",
+    "OTCQ": "XNYS",
+    "OTCM": "XNYS",
+    "XOTC": "XNYS",
+    "FINR": "XNYS",
+    "XPOR": "XNYS",
+    "XCIS": "XNYS",
+    "XPHL": "XNYS",
+    "NYMEX": "CMES",
+    "COMEX": "CMES",
+    "AEB": "XAMS",
+    "BM": "XMAD",
+    "BUX": "XBUD",
+    "BVL": "XLIS",
+    "BVME": "XMIL",
+    "CBOE": "XCBF",
+    "EBS": "XSWX",
+    "ENEXT": "XBRU",
+    "ENEXT.BE": "XBRU",
+    "GLOBEX": "CMES",
+    "KSE": "XKRX",
+    "MEXI": "XMEX",
+    "MOEX": "XMOS",
+    "SBF": "XPAR",
+    "SEHK": "XHKG",
+    "SEHKNTL": "XSHG",
+    "SEHKSZSE": "XSHG",
+    "SFB": "XSTO",
+    "SGX": "XSES",
+    "TSE": "XTSE",
+    "TSEJ": "XTKS",
+    "VSE": "XWBO",
+    "WSE": "XWAR",
 }
 
 default_calendar_names = sorted(_default_calendar_factories.keys())

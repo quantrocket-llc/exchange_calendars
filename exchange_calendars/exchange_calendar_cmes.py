@@ -45,7 +45,7 @@ class CMESExchangeCalendar(ExchangeCalendar):
     Exchange calendar for the Chicago Mercantile Exchange (CMES).
 
     Open Time: 5:00 PM, America/Chicago
-    Close Time: 5:00 PM, America/Chicago
+    Close Time: 4:00 PM, America/Chicago
 
     Regularly-Observed Holidays:
     - New Years Day
@@ -59,7 +59,7 @@ class CMESExchangeCalendar(ExchangeCalendar):
 
     open_times = ((None, time(17)),)
 
-    close_times = ((None, time(17)),)
+    close_times = ((None, time(16)),)
 
     @property
     def open_offset(self):

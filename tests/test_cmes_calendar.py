@@ -16,7 +16,7 @@ class TestCMESCalendar(ExchangeCalendarTestBase):
 
     @pytest.fixture
     def max_session_hours(self):
-        yield 24
+        yield 23
 
     @pytest.fixture
     def regular_holidays_sample(self):
