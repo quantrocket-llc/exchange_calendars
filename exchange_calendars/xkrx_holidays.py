@@ -1108,7 +1108,8 @@ dumped_precomputed_krx_holidays = pd.DatetimeIndex(
 #  (https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp)
 manually_added_holidays = pd.DatetimeIndex(
     [
-        "2023-05-29"  # Buddha's birthday holiday in lieu
+        "2023-05-29",  # Buddha's birthday holiday in lieu
+        "2023-10-02",  # Extra day for Chuseok holiday
     ]
 )
 
