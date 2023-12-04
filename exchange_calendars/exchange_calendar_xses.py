@@ -385,6 +385,16 @@ precomputed_ses_holidays = pd.to_datetime(
         "2023-09-01",  # Polling Day
         "2023-11-13",  # Deepavali (in lieu)
         "2023-12-25",  # Christmas Day
+        "2024-01-01",  # New Year's Day
+        "2024-02-12",  # Chinese New Year (in lieu)
+        "2024-03-29",  # Good Friday
+        "2024-04-10",  # Hari Raya Puasa
+        "2024-05-01",  # Labour Day
+        "2024-05-22",  # Vesak Day
+        "2024-06-17",  # Hari Raya Haji
+        "2024-08-09",  # National Day
+        "2024-10-31",  # Deepavali
+        "2024-12-25",  # Christmas Day
     ]
 )
 
