@@ -30,14 +30,19 @@ def new_years_eve_observance(dt: datetime.datetime) -> datetime.datetime | None:
     return None if dt.year in [2008, 2009] else weekend_to_monday(dt)
 
 
+def new_years_day_observance(dt: datetime.datetime) -> datetime.datetime | None:
+    # New Year's Day did not follow the next-non-holiday rule these years.
+    return None if dt.year in [2022] else weekend_to_monday(dt)
+
+
 def new_years_holiday_observance(dt: datetime.datetime) -> datetime.datetime | None:
-    # New Year's Holiday did not follow the next-non-holiday rule in 2016.
-    return None if dt.year == 2016 else weekend_to_monday(dt)
+    # New Year's Holiday did not follow the next-non-holiday rule these years.
+    return None if dt.year in [2016, 2021, 2022] else weekend_to_monday(dt)
 
 
 def orthodox_christmas_observance(dt: datetime.datetime) -> datetime.datetime | None:
     # Orthodox Christmas did not follow the next-non-holiday rule these years.
-    return None if dt.year in [2012, 2017] else weekend_to_monday(dt)
+    return None if dt.year in [2012, 2017, 2023, 2024] else weekend_to_monday(dt)
 
 
 def defender_of_fatherland_observance(
@@ -48,7 +53,22 @@ def defender_of_fatherland_observance(
     return None if dt.year in [2013, 2014, 2019] else weekend_to_monday(dt)
 
 
-NewYearsDay = new_years_day(observance=weekend_to_monday)
+def victory_day_observance(dt: datetime.datetime) -> datetime.datetime | None:
+    # Victory Day did not follow the next-non-holiday rule these years.
+    return None if dt.year in [2021] else weekend_to_monday(dt)
+
+
+def day_of_russia_observance(dt: datetime.datetime) -> datetime.datetime | None:
+    # Day of Russia did not follow the next-non-holiday rule these years.
+    return None if dt.year in [2021] else weekend_to_monday(dt)
+
+
+def unity_day_observance(dt: datetime.datetime) -> datetime.datetime | None:
+    # Unity Day did not follow the next-non-holiday rule these years.
+    return None if dt.year in [2023] else weekend_to_monday(dt)
+
+
+NewYearsDay = new_years_day(observance=new_years_day_observance)
 NewYearsHoliday = Holiday(
     "New Year's Holiday",
     month=1,
@@ -111,21 +131,21 @@ VictoryDay = Holiday(
     "Victory Day",
     month=5,
     day=9,
-    observance=weekend_to_monday,
+    observance=victory_day_observance,
 )
 
 DayOfRussia = Holiday(
     "Day of Russia",
     month=6,
     day=12,
-    observance=weekend_to_monday,
+    observance=day_of_russia_observance,
 )
 
 UnityDay = Holiday(
     "Unity Day",
     month=11,
     day=4,
-    observance=weekend_to_monday,
+    observance=unity_day_observance,
     start_date="2005",
 )
 
@@ -170,6 +190,7 @@ womens_day_extensions = [
     "2005-03-07",
     "2011-03-07",
     "2012-03-09",
+    "2022-03-07",
 ]
 
 labour_day_extensions = [
@@ -182,6 +203,8 @@ labour_day_extensions = [
     "2012-04-30",
     "2015-05-04",
     "2016-05-03",
+    # LabourDay Holiday extended to Tuesday.
+    "2022-05-03",
 ]
 
 victory_day_extensions = [
@@ -189,6 +212,8 @@ victory_day_extensions = [
     "2005-05-10",
     "2006-05-08",
     "2017-05-08",
+    # Victory Day Holiday extended to Tuesday.
+    "2022-05-10",
 ]
 
 day_of_russia_extensions = [
@@ -218,6 +243,9 @@ misc_adhoc = [
     # Trading Suspended.
     "2008-10-10",
     "2008-10-27",
+    # Non-Working Days.
+    "2020-06-24",
+    "2020-07-01",
 ]
 
 
