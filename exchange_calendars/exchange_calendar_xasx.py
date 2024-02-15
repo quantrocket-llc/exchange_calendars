@@ -14,7 +14,6 @@
 # limitations under the License.
 
 from datetime import time
-from zoneinfo import ZoneInfo
 
 from dateutil.relativedelta import MO
 from pandas import DateOffset, Timestamp
@@ -26,6 +25,7 @@ from pandas.tseries.holiday import (
     sunday_to_monday,
     weekend_to_monday,
 )
+from zoneinfo import ZoneInfo
 
 from .common_holidays import (
     anzac_day,
@@ -35,7 +35,7 @@ from .common_holidays import (
     weekend_boxing_day,
     weekend_christmas,
 )
-from .exchange_calendar import HolidayCalendar, ExchangeCalendar
+from .exchange_calendar import ExchangeCalendar, HolidayCalendar
 
 NewYearsDay = new_years_day(observance=weekend_to_monday)
 
@@ -100,12 +100,25 @@ QueensBirthday = Holiday(
     "Queen's Birthday",
     month=6,
     day=1,
+    end_date="2023",
     offset=[DateOffset(weekday=MO(2))],
 )
 
-# This was half-day until Christmas 2022 when was full-day.
-# As of 2023-01-15, ASX claim 2023 will also be full-days.
-LastTradingDayBeforeChristmas = Holiday(
+KingsBirthday = Holiday(
+    "Kings's Birthday",
+    month=6,
+    day=1,
+    start_date="2023",
+    offset=[DateOffset(weekday=MO(2))],
+)
+
+# ASX cash markets (but NOT ASX 24!) usually have a couple of early
+# closes for the last trading day before Christmas and also the last day
+# of the Calendar year. There was an exception to this in 2022 (see below).
+#
+# Sources:
+# https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar
+LastTradingDayBeforeChristmasPre2022 = Holiday(
     "Last Trading Day Before Christmas",
     month=12,
     day=24,
@@ -113,19 +126,32 @@ LastTradingDayBeforeChristmas = Holiday(
     end_date="2022",
     observance=previous_friday,
 )
+LastTradingDayBeforeChristmasPost2022 = Holiday(
+    "Last Trading Day Before Christmas",
+    month=12,
+    day=24,
+    start_date="2023",
+    observance=previous_friday,
+)
+
 Christmas = christmas()
 WeekendChristmas = weekend_christmas()
 BoxingDay = boxing_day()
 WeekendBoxingDay = weekend_boxing_day()
 
-# This was half-day until Christmas 2022 when was full-day.
-# As of 2023-01-15, ASX claim 2023 will also be full-days.
-LastTradingDayOfCalendarYear = Holiday(
+LastTradingDayOfCalendarYearPre2022 = Holiday(
     "Last Trading Day Of Calendar Year",
     month=12,
     day=31,
     start_date="2010",
     end_date="2022",
+    observance=previous_friday,
+)
+LastTradingDayOfCalendarYearPost2022 = Holiday(
+    "Last Trading Day Of Calendar Year",
+    month=12,
+    day=31,
+    start_date="2023",
     observance=previous_friday,
 )
 
@@ -184,6 +210,7 @@ class XASXExchangeCalendar(ExchangeCalendar):
                 AnzacDay2010,
                 AnzacDay,
                 QueensBirthday,
+                KingsBirthday,
                 Christmas,
                 WeekendChristmas,
                 BoxingDay,
@@ -209,8 +236,10 @@ class XASXExchangeCalendar(ExchangeCalendar):
                 self.regular_early_close,
                 HolidayCalendar(
                     [
-                        LastTradingDayBeforeChristmas,
-                        LastTradingDayOfCalendarYear,
+                        LastTradingDayBeforeChristmasPre2022,
+                        LastTradingDayOfCalendarYearPre2022,
+                        LastTradingDayBeforeChristmasPost2022,
+                        LastTradingDayOfCalendarYearPost2022,
                     ]
                 ),
             ),
