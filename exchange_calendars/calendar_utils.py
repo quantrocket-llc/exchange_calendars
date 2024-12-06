@@ -11,7 +11,6 @@ from .exchange_calendar_cmes import CMESExchangeCalendar
 from .exchange_calendar_cmes_equity import CMESEquityExchangeCalendar
 from .exchange_calendar_cmes_equity_liquid import CMESEquityLiquidHoursExchangeCalendar
 from .exchange_calendar_cbot import CBOTExchangeCalendar
-from .exchange_calendar_eex import EEXExchangeCalendar
 from .exchange_calendar_iepa import IEPAExchangeCalendar
 from .exchange_calendar_xams import XAMSExchangeCalendar
 from .exchange_calendar_xasx import XASXExchangeCalendar
@@ -77,7 +76,6 @@ _default_calendar_factories = {
     "CBOT": CBOTExchangeCalendar,
     "CME_EQUITY": CMESEquityExchangeCalendar,
     "CME_EQUITY_LIQUID": CMESEquityLiquidHoursExchangeCalendar,
-    "EEX": EEXExchangeCalendar,
     "IEPA": IEPAExchangeCalendar,
     "XAMS": XAMSExchangeCalendar,
     "XASX": XASXExchangeCalendar,
