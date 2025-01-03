@@ -360,6 +360,7 @@ HurricaneGloriaClosing = [Timestamp("1985-09-27")]
 # - President Ronald W. Reagan - June 11, 2004
 # - President Gerald R. Ford - Jan 2, 2007
 # - President George H.W. Bush - Dec 5, 2018
+# - President Jimmy Carter - Jan 9, 2025
 # added Truman and Johnson to go back to 1970
 # http://s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
 USNationalDaysofMourning = [
@@ -372,4 +373,5 @@ USNationalDaysofMourning = [
     Timestamp("2004-06-11"),
     Timestamp("2007-01-02"),
     Timestamp("2018-12-05"),
+    Timestamp("2025-01-09"),
 ]
